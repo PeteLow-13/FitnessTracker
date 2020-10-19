@@ -17,6 +17,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workouts',{
 });
 //routes
 app.use(require('./routes/api.js'));
+app.get('/', function(req, res){
+    res.json(__dirname + '/public/index.html');
+});
 app.get('/exercise', function(req,res){
     res.sendFile(__dirname + '/public/exercise.html');
 });
