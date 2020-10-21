@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Workout = require("../models/workout.js");
 
+//route to create workouts
 router.post("/api/workouts", ({ body }, res) => {
     Workout.create(body)
       .then(workout => {
@@ -11,6 +12,7 @@ router.post("/api/workouts", ({ body }, res) => {
       });
 });
 
+//route to add to existing workout
 router.put('/api/workouts/:id', ( req, res) => {
     Workout.findById(req.params.id)
         .exec()
@@ -29,6 +31,7 @@ router.put('/api/workouts/:id', ( req, res) => {
           });
 });
 
+//route to find and display last workout
 router.get('/api/workouts/', ( req ,res) => {
     Workout.find({})
         .sort([['day', -1]])
@@ -43,6 +46,7 @@ router.get('/api/workouts/', ( req ,res) => {
 
 });
 
+//route to display workouts on stats page
 router.get('/api/workouts/range', ( req ,res) => {
     Workout.find({})
         .sort([['day', -1]])
