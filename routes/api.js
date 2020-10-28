@@ -34,7 +34,7 @@ router.put('/api/workouts/:id', ( req, res) => {
 //route to find and display last workout
 router.get('/api/workouts/', ( req ,res) => {
     Workout.find({})
-        .sort([['day', -1]])
+        // .sort([['day', -1]])
         .limit(1)
         .exec()
         .then(workout => {
@@ -49,7 +49,7 @@ router.get('/api/workouts/', ( req ,res) => {
 //route to display workouts on stats page
 router.get('/api/workouts/range', ( req ,res) => {
     Workout.find({})
-        .sort([['day', -1]])
+        // .sort([['day', -1]])
         .exec()
         .then(workouts => {
             console.log(workouts)
